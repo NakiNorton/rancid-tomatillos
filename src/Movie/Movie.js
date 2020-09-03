@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Movie.css';
-import heartFavoriteFalse from '../images/heart-outline.png';
-import heartFavoriteTrue from '../images/heart.png';
+import heartFavoriteFalse from '../images/tomatoOutline.png';
+import heartFavoriteTrue from '../images/tomato.png';
 
 const Movie = ({ id, title, averageRating, posterPath, rating, favorites, loggedIn, home }) => {
   const inFavorites = favorites.find(movieId => movieId === id);

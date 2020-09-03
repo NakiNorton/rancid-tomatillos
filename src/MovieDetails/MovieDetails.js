@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import CommentContainer from '../CommentContainer/CommentContainer';
 import './MovieDetails.css';
 import { deleteRating, postNewRating } from '../apiCalls';
-import heartFavoriteFalse from '../images/heart-outline.png';
-import heartFavoriteTrue from '../images/heart.png';
+import heartFavoriteFalse from '../images/tomatoOutline.png';
+import heartFavoriteTrue from '../images/tomato.png';
 
 class MovieDetails extends Component {
   constructor(props) {

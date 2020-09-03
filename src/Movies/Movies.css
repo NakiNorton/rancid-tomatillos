@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
 
 .Movies {
   text-align: center;
@@ -12,6 +13,7 @@
 
 .all-movies-title {
   text-align: center;
+  font-family: 'Architects Daughter';
 }
 
 @media screen and (max-width: 1050px) {
