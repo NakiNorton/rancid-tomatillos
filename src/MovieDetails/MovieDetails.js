@@ -24,7 +24,7 @@ class MovieDetails extends Component {
     postNewRating(this.props.userId, this.props.currentMovie.id, this.state.formValue)
     .then(response => {
       console.log(response);
-      this.props.getUserRatings(movieDetails);
+      this.props.getUserRatings(true);
     })
     .catch(error => {
       console.log(error);
@@ -37,7 +37,7 @@ class MovieDetails extends Component {
     await deleteRating(this.props.userId, this.props.currentMovieRatingInfo.id)
       .then(response => {
         console.log(response);
-        this.props.getUserRatings(movieDetails);
+        this.props.getUserRatings(true);
       })
       .catch(error => { 
         console.log(error);
@@ -51,7 +51,7 @@ class MovieDetails extends Component {
     return (
       <section className='MovieDetails'>
         <section className='movie-poster-section'>
-          <img src={this.props.poster_path} alt={this.props.title} className='movie-details-img'/>
+          <img src={this.props.backdrop_path} alt={this.props.title} className='movie-details-img'/>
         </section>
         <section className='movie-info'>
           {this.props.loggedIn && inFavorites &&
