@@ -44,7 +44,7 @@ describe('MovieDetails component', () => {
           currentMovieRatingInfo={rating1}
           loggedIn={false}
           userId={null}
-          updateUserRatings={jest.fn()}
+          getUserRatings={jest.fn()}
           favorites={[]}
           toggleFavorite={jest.fn()}
         />
@@ -100,7 +100,7 @@ describe('MovieDetails component', () => {
           currentMovieRatingInfo={rating1}
           loggedIn={true}
           userId={1}
-          updateUserRatings={jest.fn()}
+          getUserRatings={jest.fn()}
           favorites={[]}
           toggleFavorite={jest.fn()}
         />
@@ -153,7 +153,7 @@ describe('MovieDetails component', () => {
           currentMovieRatingInfo={null}
           loggedIn={true}
           userId={1}
-          updateUserRatings={jest.fn()}
+          getUserRatings={jest.fn()}
           favorites={[]}
           toggleFavorite={jest.fn()}
         />
@@ -202,7 +202,7 @@ describe('MovieDetails component', () => {
           currentMovieRatingInfo={null}
           loggedIn={true}
           userId={1}
-          updateUserRatings={jest.fn()}
+          getUserRatings={jest.fn()}
           favorites={[17]}
           toggleFavorite={jest.fn()}
         />
@@ -247,7 +247,7 @@ describe('MovieDetails component', () => {
       }
     })
 
-    const mockUpdateUserRatings = jest.fn(); 
+    const mockgetUserRatings = jest.fn(); 
 
     render(
       <MemoryRouter>
@@ -261,7 +261,7 @@ describe('MovieDetails component', () => {
           currentMovieRatingInfo={null}
           loggedIn={true}
           userId={1}
-          updateUserRatings={mockUpdateUserRatings}
+          getUserRatings={mockgetUserRatings}
           favorites={[]}
           toggleFavorite={jest.fn()}
         />
@@ -278,7 +278,7 @@ describe('MovieDetails component', () => {
 
     fireEvent.click(submitBtn);
 
-    await waitFor(() => expect(mockUpdateUserRatings).toBeCalledTimes(1)); 
+    await waitFor(() => expect(mockgetUserRatings).toBeCalledTimes(1)); 
   });
 
   it('should delete rating and display add rating form', async () => {
@@ -307,7 +307,7 @@ describe('MovieDetails component', () => {
 
     deleteRating.mockResolvedValue('Success');
 
-    const mockUpdateUserRatings = jest.fn(); 
+    const mockgetUserRatings = jest.fn(); 
 
     render(
       <BrowserRouter>
@@ -321,7 +321,7 @@ describe('MovieDetails component', () => {
           currentMovieRatingInfo={rating1}
           loggedIn={true}
           userId={1}
-          updateUserRatings={mockUpdateUserRatings}
+          getUserRatings={mockgetUserRatings}
           favorites={[]}
           toggleFavorite={jest.fn()}
         />
@@ -332,6 +332,6 @@ describe('MovieDetails component', () => {
     
     fireEvent.click(deleteBtn);
 
-    await waitFor(() => expect(mockUpdateUserRatings).toBeCalledTimes(1));
+    await waitFor(() => expect(mockgetUserRatings).toBeCalledTimes(1));
   })
 })

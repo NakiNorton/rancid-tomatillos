@@ -24,7 +24,7 @@ class MovieDetails extends Component {
     postNewRating(this.props.userId, this.props.currentMovie.id, this.state.formValue)
     .then(response => {
       console.log(response);
-      this.props.updateUserRatings();
+      this.props.getUserRatings(movieDetails);
     })
     .catch(error => {
       console.log(error);
@@ -37,7 +37,7 @@ class MovieDetails extends Component {
     await deleteRating(this.props.userId, this.props.currentMovieRatingInfo.id)
       .then(response => {
         console.log(response);
-        this.props.updateUserRatings();
+        this.props.getUserRatings(movieDetails);
       })
       .catch(error => { 
         console.log(error);
@@ -109,7 +109,7 @@ MovieDetails.propTypes = {
   currentMovieRatingInfo: PropTypes.object,
   loggedIn: PropTypes.bool,
   userId: PropTypes.number,
-  updateUserRatings: PropTypes.func,
+  getUserRatings: PropTypes.func,
   favorites: PropTypes.array,
   toggleFavorite: PropTypes.func
 }

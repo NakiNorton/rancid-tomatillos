@@ -32,69 +32,6 @@ class App extends Component {
       })
   }
 
-  render() {
-    return (
-      <div className='App'>
-        <Header 
-        loggedIn={this.state.loggedIn} 
-        updateLoginStatus={this.updateLoginStatus} 
-        updateUserId={this.updateUserId}
-        />
-        <Switch>
-          <Route exact path='/' render={() => 
-            <Movies 
-              error={this.state.error}
-              movies={this.state.movies} 
-              loggedIn={this.state.loggedIn}
-              userRatings={this.state.userRatings}
-              analyzeMovieClick={this.analyzeMovieClick}
-              favorites={this.state.favorites}
-              home={true}
-            /> 
-          }/>
-          <Route exact path='/favorites' render={() =>
-            <Movies
-              error={this.state.error}
-              movies={this.state.movies.filter(movie => this.state.favorites.includes(movie.id))}
-              loggedIn={this.state.loggedIn}
-              userRatings={this.state.userRatings}
-              analyzeMovieClick={this.analyzeMovieClick}
-              favorites={this.state.favorites}
-              home={false}
-            />
-          }/>
-          <Route exact path='/login' render={() => 
-            <Login 
-              updateUserId={this.updateUserId}
-              updateLoginStatus={this.updateLoginStatus} 
-              loggedIn={this.state.loggedIn}
-              getUserRatings={this.getUserRatings}
-              setFavoriteMovies={this.setFavoriteMovies}
-            />
-          }/>
-          <Route exact path='/movies/:id' render={({ match }) => {
-              const movieToRender = this.state.movies.find(movie => movie.id === +match.params.id)
-              return (
-                <MovieDetails 
-                  {...movieToRender}
-                  userRatings={this.state.userRatings}
-                  currentMovie={this.state.currentMovie}
-                  currentMovieRatingInfo={this.state.currentMovieRatingInfo}
-                  loggedIn={this.state.loggedIn}
-                  userId={this.state.userId}
-                  updateUserRatings={this.updateUserRatings}
-                  favorites={this.state.favorites}
-                  toggleFavorite={this.toggleFavorite}
-                />
-              )
-            }}
-          />
-          <Route path='*' component={PageNotFound} />
-        </Switch>
-      </div>
-    )
-  }
-
   updateUserId = (id) => {
     this.setState({userId: id});
   }
@@ -155,22 +92,79 @@ class App extends Component {
     }
   } 
 
-  updateUserRatings = () => {
+  getUserRatings = (movieDetails) => {  
     fetchUserRatings(this.state.userId) 
       .then(ratings => {
         this.setState({ userRatings: ratings.ratings }, () => {
+          if (movieDetails) {
           this.findCurrentMovieRating();
+          }
         })
       })
       .catch(error => console.log(error));
   }
 
-  getUserRatings = () => {
-    fetchUserRatings(this.state.userId) 
-      .then(ratings => { 
-        this.setState({ userRatings: ratings.ratings }); 
-      })
-      .catch(error => console.log(error));
+  render() {
+    return (
+      <div className='App'>
+        <Header
+          loggedIn={this.state.loggedIn}
+          updateLoginStatus={this.updateLoginStatus}
+          updateUserId={this.updateUserId}
+        />
+        <Switch>
+          <Route exact path='/' render={() =>
+            <Movies
+              error={this.state.error}
+              movies={this.state.movies}
+              loggedIn={this.state.loggedIn}
+              userRatings={this.state.userRatings}
+              analyzeMovieClick={this.analyzeMovieClick}
+              favorites={this.state.favorites}
+              home={true}
+            />
+          } />
+          <Route exact path='/favorites' render={() =>
+            <Movies
+              error={this.state.error}
+              movies={this.state.movies.filter(movie => this.state.favorites.includes(movie.id))}
+              loggedIn={this.state.loggedIn}
+              userRatings={this.state.userRatings}
+              analyzeMovieClick={this.analyzeMovieClick}
+              favorites={this.state.favorites}
+              home={false}
+            />
+          } />
+          <Route exact path='/login' render={() =>
+            <Login
+              updateUserId={this.updateUserId}
+              updateLoginStatus={this.updateLoginStatus}
+              loggedIn={this.state.loggedIn}
+              getUserRatings={this.getUserRatings}
+              setFavoriteMovies={this.setFavoriteMovies}
+            />
+          } />
+          <Route exact path='/movies/:id' render={({ match }) => {
+            const movieToRender = this.state.movies.find(movie => movie.id === +match.params.id)
+            return (
+              <MovieDetails
+                {...movieToRender}
+                userRatings={this.state.userRatings}
+                currentMovie={this.state.currentMovie}
+                currentMovieRatingInfo={this.state.currentMovieRatingInfo}
+                loggedIn={this.state.loggedIn}
+                userId={this.state.userId}
+                getUserRatings={this.getUserRatings}
+                favorites={this.state.favorites}
+                toggleFavorite={this.toggleFavorite}
+              />
+            )
+          }}
+          />
+          <Route path='*' component={PageNotFound} />
+        </Switch>
+      </div>
+    )
   }
 }
 
