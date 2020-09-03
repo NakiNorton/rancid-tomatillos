@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../Header/Header.css';
 import { NavLink, Link } from 'react-router-dom';
+import yellowTomatoIcon from '../images/yellowTomato.png';
 
 const Header = ({ loggedIn, updateLoginStatus, updateUserId }) => {
   return (
     <header className='Header'>
       <nav>
+        
+          <img className='icon' src={yellowTomatoIcon} />
         <label className='logo'>Rancid Tomatillos</label>
+        
         <ul>
           <li><NavLink to='/' className='nav-link active' aria-label='Go home'>HOME</NavLink></li>
           {loggedIn &&
