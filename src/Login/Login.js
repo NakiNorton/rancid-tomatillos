@@ -20,27 +20,33 @@ class Login extends Component {
     }
 
     return (
-      <form className='Login'>
-        <input 
-          type='email'
-          placeholder='Email address'
-          name='email'
-          value={this.state.email}
-          onChange={this.updateUserLogin}/>
-        <input
-          type='password'
-          placeholder='Password'
-          name='password'
-          value={this.state.password} 
-          onChange={this.updateUserLogin}/>
+      <section className='Login'>
+        <form className='login-container'>
+          <h2>Log in</h2>
+          <input 
+            className='email-field'
+            type='email'
+            placeholder='Email address'
+            name='email'
+            value={this.state.email}
+            onChange={this.updateUserLogin}
+          />
+          <input
+            className='password-field'
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={this.state.password} 
+            onChange={this.updateUserLogin}
+          />
+          <button className='login-form-btn'
+            onClick={this.handleLogin}>Submit</button>
 
-        <button className='login-form-btn'
-          onClick={this.handleLogin}>Submit</button>
-
-        {this.state.loginError &&
-          <h3 className='error-msg'>{this.state.loginError}</h3>
-        }
-      </form>
+          {this.state.loginError &&
+            <h3 className='error-msg'>{this.state.loginError}</h3>
+          }
+        </form>
+      </section>
     )
   }
 
