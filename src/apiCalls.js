@@ -75,6 +75,12 @@ export async function deleteRating(userId, ratingId) {
   }
 }
 
+// export async function getVideo(movieId) {
+//   const response = await fetch(`http://localhost:3001/movies/${movieId}/videos`);
+//   const comments = await checkResponse(response);
+//   return comments;
+// }
+
 export async function getComments (movieId) {
   const response = await fetch(`http://localhost:3001/api/v1/movies/${movieId}/comments`);
   const comments = await checkResponse(response);
