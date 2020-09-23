@@ -62,33 +62,37 @@ class CommentContainer extends Component {
   }
 
   render() {
+    const { loggedIn } = this.props
     return (
       <section className='CommentContainer' aria-label='Movie comment area'>
-        <h3 className='commentsHeader'> Comments </h3>
-        {this.props.loggedIn &&
-          <form className='CommentForm'>
-            <h4> Add comment: </h4>
-            <input 
-            className='nameInputArea' 
-            name='author' type='text' 
-            maxLength='50' placeholder='Your name/alias' 
-            value={this.state.author} 
-            onChange={this.handleChange}
-            />
-            <textarea 
-            rows='5' 
-            name='comment' 
-            type='text' 
-            maxLength='300' 
-            placeholder='Write your comment here.. (300 max characters)' 
-            value={this.state.comment} 
-            onChange={this.handleChange}/>
-            <input className='postBtn' 
-            type='submit' 
-            value='Post' 
-            onClick={this.validateComment} 
-            />
-          </form> 
+        {!loggedIn && <h3 className='commentsHeader'> View Comments </h3>}
+        {loggedIn &&
+         <>
+          <h3 className='commentsHeader'> View or Add Comments </h3>
+            <form className='CommentForm'>
+              <h4> Add Your Comment: </h4>
+              <input 
+              className='nameInputArea' 
+              name='author' type='text' 
+              maxLength='50' placeholder='Your name/alias' 
+              value={this.state.author} 
+              onChange={this.handleChange}
+              />
+              <textarea 
+              rows='5' 
+              name='comment' 
+              type='text' 
+              maxLength='300' 
+              placeholder='Write your comment here.. (300 max characters)' 
+              value={this.state.comment} 
+              onChange={this.handleChange}/>
+              <input className='postBtn' 
+              type='submit' 
+              value='Post' 
+              onClick={this.validateComment} 
+              />
+            </form> 
+        </>
         }
 
         {!this.state.allComments.length &&
