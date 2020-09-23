@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import CommentContainer from '../CommentContainer/CommentContainer';
 import './MovieDetails.css';
 import { deleteRating, postNewRating } from '../apiCalls';
-import heartFavoriteFalse from '../images/tomatoOutline.png';
-import heartFavoriteTrue from '../images/tomato.png';
+import favoriteIconFalse from '../images/yellowTomato.png';
+import favoriteIconTrue from '../images/tomato.png';
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -55,10 +55,10 @@ class MovieDetails extends Component {
         </section>
         <section className='movie-info'>
           {this.props.loggedIn && inFavorites &&
-            <img className="details-heart" src={heartFavoriteTrue} alt='favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
+            <img className="details-heart" src={favoriteIconTrue} alt='favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
           }
           {this.props.loggedIn && !inFavorites &&
-            <img className="details-heart" src={heartFavoriteFalse} alt='not favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
+            <img className="details-heart" src={favoriteIconFalse} alt='not favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
           }
           <h2>{this.props.title}</h2>
           <h3>Release date: {this.props.release_date}</h3>
@@ -73,7 +73,7 @@ class MovieDetails extends Component {
         
           {this.props.loggedIn && !this.props.currentMovieRatingInfo && (
             <form aria-label="select movie rating">
-              <select name='rateMovieDropdown' data-testid='select-one' onChange={this.handleFormSelection}>
+              <select className='rating-input' name='rateMovieDropdown' data-testid='select-one' onChange={this.handleFormSelection}>
                 <option value=''>--Choose a rating--</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -86,7 +86,7 @@ class MovieDetails extends Component {
                 <option value='9'>9</option>
                 <option value='10' data-testid='val10'>10</option>
               </select>
-              <input type='submit' value='Submit' onClick={this.addRating}/> 
+              <input className='submit-btn' type='submit' value='Submit' onClick={this.addRating}/> 
             </form>
             )}
           {this.state.error &&

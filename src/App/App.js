@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   analyzeMovieClick = (event) => {
-    if (event.target.classList.contains('heart')) {
+    if (event.target.classList.contains('tomato')) {
       this.toggleFavorite(event);
     } else {
       this.updateCurrentMovie(event); 
@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   toggleFavorite = event => {
-    const movieId = event.target.id.slice(5); 
+    const movieId = event.target.id.slice(6); 
     postFavoriteMovie(movieId)
       .then(response => {
         console.log(response);
