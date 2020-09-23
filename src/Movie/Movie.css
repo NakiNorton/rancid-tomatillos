@@ -1,28 +1,27 @@
 .Movie {
-  height: 45em; 
-  width: 28em;
+  height: 28em; 
+  width: 18em;
   border-radius: .5em; 
   background-size: cover; 
-  margin-bottom: 1em; 
-  /* border: .5px solid white;  */
+  margin-bottom: 1.6em; 
   box-shadow: inset 0 0 15px white;
 }
 
 .Movie:hover {
-    transform: scale(1.02);
+    transform: scale(1.06);
 }
 
-.heart {
+.tomato {
   float: left; 
   padding-top: .5em;
   padding-left: .5em;
   padding-right: .5em;
   padding-bottom: 0.3em;
-  height: 58px;
+  height: 40px;
   margin-left: 0.8em;
 }
 
-.heart:hover {
+.tomato:hover {
   transform: scale(1.2);
 }
 
@@ -30,7 +29,7 @@
   margin-top: 0;
   float: right; 
   padding: .8em; 
-  font-size: 1.4em; 
+  font-size: 1.2em; 
   font-style: bolder; 
   color:black;
   background-color: white; 
@@ -40,7 +39,7 @@
 
 .user-rating {
   color: whitesmoke;
-  font-size: 1.6em;
+  font-size: 1.2em;
   margin-right: 1em;
 }
 
@@ -49,10 +48,10 @@
   display: flex;
   justify-content: space-between;
   opacity: 0.8;
-  height: 5.5em;
-  width: 28em;
+  height: 4.5em;
+  width: 18em;
   border-radius: 0.3em;
   border: 1px solid tomato;
   box-shadow: inset 0 0 10px tomato;
-  margin-bottom: 5em;
+  margin-bottom: 1.5em;
 }

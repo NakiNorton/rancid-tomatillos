@@ -3,10 +3,11 @@
 .Movies {
   text-align: center;
   min-height: 300px;
-  padding: 25px;
+  padding: 40px;
   display: grid; 
+  grid-row-gap: 32px;
   font-size: 14px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   justify-items: center;
   margin-top: 5em;
 }
