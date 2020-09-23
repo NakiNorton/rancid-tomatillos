@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Movie.css';
-import heartFavoriteFalse from '../images/yellowTomato.png';
-import heartFavoriteTrue from '../images/tomato.png';
+import favoriteIconFalse from '../images/yellowTomato.png';
+import favoriteIconTrue
+ from '../images/tomato.png';
 
 const Movie = ({ id, title, averageRating, posterPath, rating, favorites, loggedIn, home }) => {
   const inFavorites = favorites.find(movieId => movieId === id);
@@ -16,21 +17,17 @@ const Movie = ({ id, title, averageRating, posterPath, rating, favorites, logged
         </section>
           {loggedIn &&
           <section className='movie-card-info' onClick={(event) => { event.preventDefault() }}>
-            <img className='heart' src={inFavorites ? heartFavoriteTrue : heartFavoriteFalse} id={`heart${id}`} alt='favorited' onClick={(event) => { event.preventDefault() }} />
-          {rating &&
-        <p className='user-rating'>Your rating: {rating.rating} / 10</p>
-          } 
+            <img className='tomato' src={inFavorites ? favoriteIconTrue
+               : favoriteIconFalse} id={`heart${id}`} alt='favorited' onClick={(event) => { event.preventDefault() }} />
+            <p className='user-rating'>{rating ? `Your rating: ${rating.rating} / 10` : "Add your rating" }</p>
         </section>
         }
       </div>
       }
       {!home && 
         <section className='Movie' aria-label='movie-overview' style={{ backgroundImage: `url(${posterPath})` }} id={id} alt={title}>
-          <img className='heart' style={{ opacity: '0.9' }} src={heartFavoriteTrue} id={`heart${id}`} alt='favorited' onClick={(event) => {event.preventDefault()}}/>
-          {/* <p className='movie-rating'>{Math.round(averageRating * 10) / 10} / 10</p>
-          {rating &&
-            <p className='user-rating'>Your rating: {rating.rating} / 10</p>
-          } */}
+          <img className='tomato' style={{ opacity: '0.9' }} src={favoriteIconTrue
+          } id={`tomato${id}`} alt='favorited' onClick={(event) => {event.preventDefault()}}/>
         </section>
       }
     </>
