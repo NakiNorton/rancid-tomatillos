@@ -17,8 +17,8 @@ describe('Header Component', () => {
       </BrowserRouter>
     )
     
-    const loginBtn = screen.getByText('Log in');
-    const heading = screen.getByRole('heading');
+    const loginBtn = screen.getByText('LOG IN');
+    const heading = screen.getByText('Rancid Tomatillos');
     const homeLink = screen.getByLabelText('Go home');
     
     expect(loginBtn).toBeInTheDocument();
@@ -38,8 +38,8 @@ describe('Header Component', () => {
       </BrowserRouter>
     )
 
-    const logoutBtn = screen.getByText('Log out');
-    const heading = screen.getByRole('heading');
+    const logoutBtn = screen.getByText('LOG OUT');
+    const heading = screen.getByText('Rancid Tomatillos');
     const homeLink = screen.getByLabelText('Go home');
     const favoritesLink = screen.getByLabelText('View favorites');
 
@@ -64,8 +64,8 @@ describe('Header Component', () => {
       </BrowserRouter>
     )
     
-    const button = screen.getByRole('button');
-    fireEvent.click(button); 
+    const logOutLink = screen.getByText('LOG OUT')
+    fireEvent.click(logOutLink); 
 
     expect(mockUpdateLoginStatus).toBeCalledTimes(1);
     expect(mockUpdateLoginStatus).toBeCalledWith(false);

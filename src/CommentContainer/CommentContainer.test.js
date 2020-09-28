@@ -29,7 +29,7 @@ describe('CommentsContainer component', () => {
       </BrowserRouter>
     )
   
-    const commentsHeading = screen.getByText('Comments');
+    const commentsHeading = screen.getByText('View Comments');
     expect(commentsHeading).toBeInTheDocument();
   })
 
@@ -44,8 +44,8 @@ describe('CommentsContainer component', () => {
       </BrowserRouter>
     )
 
-    const commentsHeading = screen.getByText('Comments');
-    const formHeading = screen.getByText('Add comment:');
+    const commentsHeading = screen.getByText('View or Add Comments');
+    const formHeading = screen.getByText('Add Your Comment:');
     const formButton = screen.getByText('Post');
   
     expect(commentsHeading).toBeInTheDocument();

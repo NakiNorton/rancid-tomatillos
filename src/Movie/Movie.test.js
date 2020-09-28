@@ -22,7 +22,7 @@ describe('Movie Component', () => {
         </BrowserRouter>
     )
     const aveRating = screen.getByText('10 / 10');
-    const movieImage = screen.getByLabelText('movie-overview');
+    const movieImage = screen.getByLabelText('Cats movie overview');
 
     expect(aveRating).toBeInTheDocument();
     expect(movieImage).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe('Movie Component', () => {
       </BrowserRouter>
     )
     const aveRating = screen.getByText('10 / 10');
-    const movieImage = screen.getByLabelText('movie-overview');
+    const movieImage = screen.getByLabelText('Cats movie overview');
     const userRating = screen.getByText('Your rating: 10 / 10');
     const tomatoIcon = screen.getByAltText('tomato icon');
   

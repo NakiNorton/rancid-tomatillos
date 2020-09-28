@@ -12,7 +12,7 @@ const Movie = ({ id, title, averageRating, posterPath, rating, favorites, logged
     <>
       {home &&
         <>
-          <section className='Movie' aria-label='movie-overview' style={{ backgroundImage: `url(${posterPath})` }} id={id} alt={title}>
+          <section className='Movie' aria-label={`${title} movie overview`} style={{ backgroundImage: `url(${posterPath})` }} id={id} alt={title}>
           <p className='movie-rating'>{Math.round(averageRating * 10) / 10} / 10</p>
           </section>
           {loggedIn && 
@@ -24,7 +24,7 @@ const Movie = ({ id, title, averageRating, posterPath, rating, favorites, logged
         </>
       }
       {!home && 
-        <section className='Movie' aria-label='movie-overview' style={{ backgroundImage: `url(${posterPath})` }} id={id} alt={title}>
+        <section className='Movie' aria-label={`${title} movie overview`} style={{ backgroundImage: `url(${posterPath})` }} id={id} alt={title}>
           <img className='tomato' style={{ opacity: '0.9' }} src={favoriteIconTrue
           } id={`tomato${id}`} alt='favorited' onClick={(event) => {event.preventDefault()}}/>
         </section>
