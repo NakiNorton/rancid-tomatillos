@@ -21,11 +21,9 @@ describe('Movie Component', () => {
           />
         </BrowserRouter>
     )
-    const title = screen.getByText('Cats');
     const aveRating = screen.getByText('10 / 10');
     const movieImage = screen.getByLabelText('movie-overview');
 
-    expect(title).toBeInTheDocument();
     expect(aveRating).toBeInTheDocument();
     expect(movieImage).toBeInTheDocument();
   });
@@ -55,38 +53,14 @@ describe('Movie Component', () => {
         />
       </BrowserRouter>
     )
-    const title = screen.getByText('Cats');
     const aveRating = screen.getByText('10 / 10');
     const movieImage = screen.getByLabelText('movie-overview');
     const userRating = screen.getByText('Your rating: 10 / 10');
-    const heartIcon = screen.getByAltText('not favorited');
+    const tomatoIcon = screen.getByAltText('tomato icon');
   
-    expect(title).toBeInTheDocument();
     expect(aveRating).toBeInTheDocument();
     expect(movieImage).toBeInTheDocument();
     expect(userRating).toBeInTheDocument();
-    expect(heartIcon).toBeInTheDocument(); 
+    expect(tomatoIcon).toBeInTheDocument(); 
   });
-
-  it('when a user is logged in, their favorite movies should be displayed with a filled in heart icon', () => {
-
-    render(
-      <BrowserRouter>
-        <Movie
-          id={1}
-          title='Cats'
-          averageRating={10}
-          backdropPath='http://coolcats.com'
-          favorites={[1]}
-          loggedIn={true}
-          rating={null}
-          home={false}
-        />
-      </BrowserRouter>
-    )
-
-    const heartIcon = screen.getByAltText('favorited');
-
-    expect(heartIcon).toBeInTheDocument();
-  })
 })

@@ -17,7 +17,7 @@ const Movie = ({ id, title, averageRating, posterPath, rating, favorites, logged
           </section>
           {loggedIn && 
             <section className='movie-card-info'>
-              <img className='tomato' src={inFavorites ? favoriteIconTrue : favoriteIconFalse} id={`tomato${id}`} alt='favorited' onClick={(event) => { event.preventDefault() }} />
+              <img className='tomato' src={inFavorites ? favoriteIconTrue : favoriteIconFalse} id={`tomato${id}`} alt='tomato icon' onClick={(event) => { event.preventDefault() }} />
               <p className='user-rating'>{rating ? `Your rating: ${rating.rating} / 10` : "Add your rating"}</p>
             </section>
           }
