@@ -37,11 +37,12 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const title1 = await waitFor (() => screen.getByText('Cats'));
-    const title2 = await waitFor(() => screen.getByText('Dogs'));
+    const movieSection = await waitFor (() => screen.getByLabelText('all-movies'));
+    const movieImage = screen.getByLabelText('Cats movie overview');
 
-    expect(title1).toBeInTheDocument();
-    expect(title2).toBeInTheDocument();
+    expect(movieSection).toBeInTheDocument();
+    expect(movieImage).toBeInTheDocument();
+
   })
 
   it('should display an error message if movie cards fail to load', async () => 
@@ -110,7 +111,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -127,7 +128,7 @@ describe('App Component', () => {
 
     fireEvent.click(submitBtn); 
 
-    const logOutBtn = await waitFor(() => screen.getByText('Log out'));
+    const logOutBtn = await waitFor(() => screen.getByText('LOG OUT'));
 
     expect(logOutBtn).toBeInTheDocument(); 
   });
@@ -189,7 +190,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -200,7 +201,7 @@ describe('App Component', () => {
     fireEvent.change(passwordInput, { target: { value: '111111' }});
     fireEvent.click(submitBtn);
 
-    const movieCardBtn = await waitFor( () => screen.getByText('Cats'));
+    const movieCardBtn = await waitFor( () => screen.getByLabelText('Cats movie overview'));
 
     fireEvent.click(movieCardBtn);
 
@@ -270,7 +271,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -281,7 +282,7 @@ describe('App Component', () => {
     fireEvent.change(passwordInput, { target: { value: '111111' }});
     fireEvent.click(submitBtn);
 
-    const movieCardBtn = await waitFor(() => screen.getByText('Cats'));
+    const movieCardBtn = await waitFor(() => screen.getByLabelText('Cats movie overview'));
 
     fireEvent.click(movieCardBtn);
 
@@ -349,7 +350,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -360,7 +361,7 @@ describe('App Component', () => {
     fireEvent.change(passwordInput, { target: { value: '111111' }});
     fireEvent.click(submitBtn);
 
-    const movieCardBtn = await waitFor(() => screen.getByText('Cats'));
+    const movieCardBtn = await waitFor(() => screen.getByLabelText('Cats movie overview'));
 
     fireEvent.click(movieCardBtn);
 
@@ -430,7 +431,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -446,17 +447,17 @@ describe('App Component', () => {
     fireEvent.change(passwordInput, { target: { value: '111111' }});
     fireEvent.click(submitBtn);
 
-    const movieCardIcon = await waitFor(() => screen.getByAltText('not favorited'));
+    const movieCardIcon = await waitFor(() => screen.getByAltText('tomato icon'));
 
     fireEvent.click(movieCardIcon);
 
-    const movieCardIconFavorited = await waitFor(() => screen.getByAltText('favorited'));
+    const movieCardIconFavorited = await waitFor(() => screen.getByAltText('tomato icon'));
 
     expect(movieCardIconFavorited).toBeInTheDocument();
 
     fireEvent.click(movieCardIconFavorited);
 
-    const movieCardFilledIcon = await waitFor(() => screen.getByAltText('not favorited'));
+    const movieCardFilledIcon = await waitFor(() => screen.getByAltText('tomato icon'));
 
     expect(movieCardFilledIcon).toBeInTheDocument();
   });
@@ -516,7 +517,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -532,7 +533,7 @@ describe('App Component', () => {
     fireEvent.change(passwordInput, { target: { value: '111111' }});
     fireEvent.click(submitBtn);
 
-    const movieCard = await waitFor(() => screen.getByText('Cats'));
+    const movieCard = await waitFor(() => screen.getByLabelText('Cats movie overview'));
 
     fireEvent.click(movieCard);
 
@@ -598,7 +599,7 @@ describe('App Component', () => {
       </MemoryRouter>
     )
 
-    const loginBtn = screen.getByText('Log in');
+    const loginBtn = screen.getByText('LOG IN');
     fireEvent.click(loginBtn);
 
     const emailInput = screen.getByPlaceholderText('Email address');
@@ -614,15 +615,15 @@ describe('App Component', () => {
     fireEvent.change(passwordInput, { target: { value: '111111' }});
     fireEvent.click(submitBtn);
 
-    const movieCardIcon = await waitFor(() => screen.getByAltText('not favorited'));
+    const movieCardIcon = await waitFor(() => screen.getByAltText('tomato icon'));
 
     fireEvent.click(movieCardIcon);
 
-    const FavoritesNavItem = screen.getByText('Favorites');
+    const FavoritesNavItem = screen.getByText('Favorites', { exact: false });
 
     fireEvent.click(FavoritesNavItem);
 
-    const favoriteMovie = await waitFor(() => screen.getByText('Cats'));
+    const favoriteMovie = await waitFor(() => screen.getByLabelText('Cats movie overview'));
 
     expect(favoriteMovie).toBeInTheDocument(); 
   })
