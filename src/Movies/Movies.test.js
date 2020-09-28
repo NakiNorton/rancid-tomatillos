@@ -227,11 +227,12 @@ describe('Movies Component', () => {
       </BrowserRouter>
     )
 
-    const movieTitle1 = screen.getByRole('heading', {name: 'Cats'});
-    const movieTitle2 = screen.getByRole('heading', {name: 'Dogs'});
-
-    expect(movieTitle1).toBeInTheDocument();
-    expect(movieTitle2).toBeInTheDocument(); 
+    const movieRating1 = screen.getByText('10 / 10');
+    const movieRating2 = screen.getByText('9 / 10');
+  
+    expect(movieRating1).toBeInTheDocument();
+    expect(movieRating2).toBeInTheDocument(); 
+  
   });
 
   it('should call analyzeMovieClick when movie card is clicked', () => {
