@@ -6,5 +6,6 @@ email: false
 deploy:
   provider: heroku
   api_key:
-    secure: "8172522c-7ae7-43ab-8160-56c61e002a42"
+    secure: "5e927954-c5f0-415e-9a1f-148bee6a1117"
+  skip_cleanup: true
 
