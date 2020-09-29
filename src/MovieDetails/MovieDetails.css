@@ -16,12 +16,12 @@
   width: 180%;
 }
 
-.details-heart {
+.details-tomato{
   cursor: pointer;
   height: 60px;
 }
 
-.details-heart:hover {
+.details-tomato:hover {
   transform: scale(1.1);
 }
 
