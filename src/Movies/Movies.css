@@ -14,6 +14,18 @@
 
 .all-movies-title {
   text-align: center;
+  font-size: xxx-large;
+  font-family: 'Architects Daughter';
+}
+
+.fav-instructions {
+  text-align: center;
+  color: tomato;
+  font-family: 'Architects Daughter';
+}
+
+.error-msg {
+  margin-top: 5em;
   font-family: 'Architects Daughter';
 }
 

@@ -36,6 +36,9 @@ const Movies = ({ error, movies, loggedIn, userRatings, analyzeMovieClick, favor
           { movies.length > 0 &&
             <h2 className='all-movies-title'>Browse All Movies</h2>
           }
+            {loggedIn &&
+            <h3 className='fav-instructions'>Click on a tomato to add or remove the movie from your favorites!</h3>
+            }
             <section aria-label='all-movies' className='Movies' onClick={(event) => { analyzeMovieClick(event)}}> 
               {movieList}
             </section>
