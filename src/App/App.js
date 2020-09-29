@@ -49,10 +49,9 @@ class App extends Component {
   }
 
   toggleFavorite = event => {
-    const movieId = event.target.id.slice(6); 
+    const movieId = event.target.id; 
     postFavoriteMovie(movieId)
       .then(response => {
-        console.log(response);
         this.setFavoriteMovies();
       })
       .catch(error => {
@@ -63,7 +62,6 @@ class App extends Component {
   setFavoriteMovies = () => {
     getFavoriteMovies()
       .then(movies => {
-        console.log(movies);
         this.setState({favorites: movies});
       }) 
       .catch(error => {
