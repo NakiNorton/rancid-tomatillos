@@ -46,7 +46,8 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const inFavorites = this.props.favorites.find(movieId => movieId === this.props.currentMovie.id); 
+    const inFavorites = this.props.favorites.find(movieId => 
+      movieId === this.props.currentMovie.id); 
 
     return (
       <section className='MovieDetails'>
@@ -54,11 +55,8 @@ class MovieDetails extends Component {
           <img src={this.props.backdrop_path} alt={this.props.title} className='movie-details-img'/>
         </section>
         <section className='movie-info'>
-          {this.props.loggedIn && inFavorites &&
-            <img className="details-heart" src={favoriteIconTrue} alt='favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
-          }
-          {this.props.loggedIn && !inFavorites &&
-            <img className="details-heart" src={favoriteIconFalse} alt='not favorited' id={`heart${this.props.currentMovie.id}`} onClick={(event) => { this.props.toggleFavorite(event)}}/>
+          {this.props.loggedIn &&
+            <img className='details-tomato' src={inFavorites ? favoriteIconTrue : favoriteIconFalse} id={this.props.currentMovie.id} alt='tomato icon' onClick={(event) => { this.props.toggleFavorite(event) }} />
           }
           <h2>{this.props.title}</h2>
           <h3>Release date: {this.props.release_date}</h3>
